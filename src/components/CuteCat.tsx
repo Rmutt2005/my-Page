@@ -1,0 +1,43 @@
+import { useState, useEffect } from "react";
+import cuteCatImage from "@/assets/cute-cat.png";
+
+interface CuteCatProps {
+  isWaving?: boolean;
+  message?: string;
+  className?: string;
+}
+
+const CuteCat = ({ isWaving = false, message, className = "" }: CuteCatProps) => {
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => setShowMessage(true), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
+  return (
+    <div className={`flex flex-col items-center ${className}`}>
+      <div className={`relative ${isWaving ? 'animate-bounce-cute' : 'animate-float'}`}>
+        <img 
+          src={cuteCatImage} 
+          alt="Cute Cat" 
+          className="w-32 h-32 md:w-40 md:h-40 drop-shadow-lg"
+        />
+        {/* Speech bubble */}
+        {message && showMessage && (
+          <div className="absolute -top-16 -left-4 md:-left-8 bg-white rounded-2xl p-3 shadow-soft border-2 border-primary/20 max-w-48 animate-fade-in">
+            <p className="text-sm font-medium text-foreground text-center">
+              {message}
+            </p>
+            {/* Arrow pointing down */}
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white"></div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default CuteCat;

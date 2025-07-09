@@ -8,35 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cute pastel color palette */
+    --background: 350 100% 98%;
+    --foreground: 340 15% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 340 15% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 340 15% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - cute pink */
+    --primary: 340 100% 85%;
+    --primary-foreground: 340 15% 25%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - soft lavender */
+    --secondary: 270 100% 95%;
+    --secondary-foreground: 340 15% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - light peachy */
+    --muted: 20 100% 96%;
+    --muted-foreground: 340 15% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - bright coral */
+    --accent: 15 100% 88%;
+    --accent-foreground: 340 15% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 340 50% 92%;
+    --input: 340 50% 96%;
+    --ring: 340 100% 85%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
+    
+    /* Custom gradients for cute effects */
+    --gradient-cute: linear-gradient(135deg, hsl(340 100% 95%), hsl(270 100% 95%));
+    --gradient-heart: linear-gradient(135deg, hsl(340 100% 88%), hsl(15 100% 88%));
+    --gradient-sky: linear-gradient(180deg, hsl(200 100% 95%), hsl(220 100% 97%));
+    
+    /* Shadow effects */
+    --shadow-cute: 0 8px 30px hsla(340, 100%, 85%, 0.3);
+    --shadow-soft: 0 4px 20px hsla(340, 50%, 90%, 0.4);
+    
+    /* Animation values */
+    --bounce-duration: 0.6s;
+    --float-duration: 3s;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +118,54 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-kanit;
+    background: var(--gradient-sky);
+    min-height: 100vh;
   }
+}
+
+@layer utilities {
+  .gradient-cute {
+    background: var(--gradient-cute);
+  }
+  
+  .gradient-heart {
+    background: var(--gradient-heart);
+  }
+  
+  .shadow-cute {
+    box-shadow: var(--shadow-cute);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .animate-float {
+    animation: float var(--float-duration) ease-in-out infinite;
+  }
+  
+  .animate-bounce-cute {
+    animation: bounce-cute var(--bounce-duration) ease-in-out infinite;
+  }
+  
+  .animate-heart-beat {
+    animation: heart-beat 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce-cute {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  25%, 75% { transform: scale(1.1); }
+  50% { transform: scale(1.2); }
 }
