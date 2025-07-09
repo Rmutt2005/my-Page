@@ -1,6 +1,16 @@
 import { useState, useEffect } from "react";
 import cuteCatImage from "@/assets/cute-cat.png";
 
+// Cat images array - using placeholder images from your knowledge base
+const catImages = [
+  cuteCatImage,
+  "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=400&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400&h=400&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=400&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&h=400&fit=crop&crop=face"
+];
+
 interface CuteCatProps {
   isWaving?: boolean;
   message?: string;
@@ -9,6 +19,7 @@ interface CuteCatProps {
 
 const CuteCat = ({ isWaving = false, message, className = "" }: CuteCatProps) => {
   const [showMessage, setShowMessage] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     if (message) {
@@ -17,13 +28,18 @@ const CuteCat = ({ isWaving = false, message, className = "" }: CuteCatProps) =>
     }
   }, [message]);
 
+  const handleImageClick = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % catImages.length);
+  };
+
   return (
     <div className={`flex flex-col items-center ${className}`}>
       <div className={`relative ${isWaving ? 'animate-bounce-cute' : 'animate-float'}`}>
         <img 
-          src={cuteCatImage} 
+          src={catImages[currentImageIndex]} 
           alt="Cute Cat" 
-          className="w-32 h-32 md:w-40 md:h-40 drop-shadow-lg"
+          className="w-32 h-32 md:w-40 md:h-40 drop-shadow-lg cursor-pointer hover:scale-105 transition-transform duration-200"
+          onClick={handleImageClick}
         />
         {/* Speech bubble */}
         {message && showMessage && (
