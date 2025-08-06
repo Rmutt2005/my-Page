@@ -7,39 +7,46 @@ import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 const reasons = [
   {
     emoji: "🍟",
-    title: "เราแชร์ของกินเก่งมาก!",
-    description: "ไม่เอาแต่ชิ้นใหญ่ แถมยังจำได้ว่าคุณชอบกินอะไร ไม่ชอบอะไร แม้แต่เรื่องผักชีก็จำได้!"
+    title: "เค้าพาเธอหาของกินเก่งมาก!",
+    description: "ที่ไหนมีของอย่อย เค้าจาพาเธอไปทุกที่เยย!",
   },
   {
     emoji: "📅",
-    title: "เราจำวันสำคัญได้แม่นกว่า Google Calendar",
-    description: "วันเกิด วันครบรอบ วันที่เราเจอกันครั้งแรก แม้แต่วันที่คุณทำผมสวยก็จำได้หมด!"
+    title: "เค้าจะไม่ผิดนัดกับเธอ",
+    description: "นัดไปเดท กินข้าว ดูหนัง ที่ไหนก็ตาม เค้าจะไปตรงเวลาเสมอ!",
   },
   {
     emoji: "🎮",
-    title: "เราไม่เล่นเกมจนลืมคุณ",
-    description: "(เว้นแต่คุณอยากเล่นด้วยกันนะ!) และถึงเล่นก็จะแชร์หน้าจอให้ดู หรือสอนเล่นด้วยกัน"
+    title: "เค้าไม่เล่นเกมจนลืมเธอ",
+    description:
+      "(เว้นแต่เธออยากเล่นด้วยกันนะ!) และถึงเล่นก็จะแชร์หน้าจอให้ดู หรือสอนเล่นด้วยยย",
   },
   {
     emoji: "🛠️",
-    title: "เราซ่อมของเก่งมาก!",
-    description: "หลอดไฟเสีย ก๊อกน้ำหยด คอมพิวเตอร์ช้า เราจัดการได้หมด! (ยกเว้นหัวใจที่แตกเพราะเราไม่อยากทำให้คุณเสียใจ)"
+    title: "เราซ่อมของให้เธอได้!!",
+    description:
+      "หลอดไฟเสีย ก๊อกน้ำหยด คอมพิวเตอร์พัง เค้าจัดการได้หมด! (ยกเว้นหัวใจที่แตกเพราะเค้าไม่อยากทำให้เธอเสียใจ)",
   },
   {
     emoji: "☕",
-    title: "เราชงกาแฟให้ตื่นนอนได้",
-    description: "และจำได้ว่าคุณชอบหวานแค่ไหน นมเยอะแค่ไหน แม้แต่ใส่ฟองนมรูปหัวใจให้ด้วย!"
-  }
+    title: "เค้าทำกับข้าวให้เธอได้!!",
+    description:
+      "เค้าสามารถทำทุกอย่างที่เธอต้องการได้ แต่จะอร่อยมั้ยเค้าไม่รู้ว!",
+  },
 ];
 
 const Index = () => {
-  const [currentStep, setCurrentStep] = useState<"question" | "reasons" | "final">("question");
+  const [currentStep, setCurrentStep] = useState<
+    "question" | "reasons" | "final"
+  >("question");
   const [currentReasonIndex, setCurrentReasonIndex] = useState(0);
   const [catMessage, setCatMessage] = useState<string>("");
 
   const handleStartReasons = (eager: boolean) => {
     setCurrentStep("reasons");
-    setCatMessage(eager ? "เย้! เตรียมตัวฟังให้ดีนะ!" : "เอาละ... เรามาเริ่มกันเถอะ");
+    setCatMessage(
+      eager ? "เย้! เตรียมตัวฟังให้ดีนะ!" : "เอาละ... เรามาเริ่มกันเถอะ"
+    );
     setTimeout(() => setCatMessage(""), 2000);
   };
 
@@ -67,13 +74,9 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4">
       <div className="max-w-2xl mx-auto text-center">
-        
         {/* Cute Cat */}
         <div className="mb-8">
-          <CuteCat 
-            isWaving={currentStep === "question"} 
-            message={catMessage}
-          />
+          <CuteCat isWaving={currentStep === "question"} message={catMessage} />
         </div>
 
         {/* Question Step */}
@@ -87,16 +90,16 @@ const Index = () => {
                 ว่าทำไมคุณควรเป็นแฟนกับผม?
               </h2>
             </div>
-            
+
             <div className="space-y-4">
-              <HeartButton 
+              <HeartButton
                 onClick={() => handleStartReasons(true)}
                 variant="primary"
               >
                 เล่าให้ฟังหน่อยสิ
               </HeartButton>
-              
-              <HeartButton 
+
+              <HeartButton
                 onClick={() => handleStartReasons(false)}
                 variant="secondary"
               >
@@ -108,15 +111,19 @@ const Index = () => {
 
         {/* Reasons Step */}
         {currentStep === "reasons" && (
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-8 animate-fade-in items-center">
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-2">
                 เหตุผลที่ {currentReasonIndex + 1} จาก {reasons.length}
               </h2>
               <div className="w-full bg-secondary/30 rounded-full h-2 mb-6">
-                <div 
+                <div
                   className="bg-primary h-2 rounded-full transition-all duration-500"
-                  style={{ width: `${((currentReasonIndex + 1) / reasons.length) * 100}%` }}
+                  style={{
+                    width: `${
+                      ((currentReasonIndex + 1) / reasons.length) * 100
+                    }%`,
+                  }}
                 ></div>
               </div>
             </div>
@@ -127,7 +134,7 @@ const Index = () => {
               onClick={() => {}}
             />
 
-            <div className="flex justify-between items-center">
+            <div className="flex justify-center items-center ">
               <button
                 onClick={prevReason}
                 disabled={currentReasonIndex === 0}
@@ -137,8 +144,14 @@ const Index = () => {
                 ก่อนหน้า
               </button>
 
-              <HeartButton onClick={nextReason}>
-                {currentReasonIndex === reasons.length - 1 ? "ฟังครบแล้ว!" : "เหตุผลต่อไป!"}
+              <HeartButton
+                onClick={() => {
+                  nextReason();
+                }}
+              >
+                {currentReasonIndex === reasons.length - 1
+                  ? "ฟังครบแล้ว!"
+                  : "เหตุผลต่อไป!"}
               </HeartButton>
 
               <button
@@ -157,22 +170,22 @@ const Index = () => {
           <div className="space-y-8 animate-fade-in">
             <div>
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                เป็นไงบ้าง? 
+                เป็นไงบ้าง?
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
                 มีสักข้อที่โดนใจมั้ย? 🥺
               </p>
             </div>
-            
+
             <div className="space-y-4">
-              <HeartButton 
-                onClick={() => setCatMessage("เย้ๆๆ! ขอเบอร์หน่อย! 📱")}
+              <HeartButton
+                onClick={() => setCatMessage("เย้ๆๆ! กดใจหัวใจมาจิ อิอิ 📱")}
                 variant="primary"
               >
                 เออ จริงนะ ลองคุยกันดูมั้ย?
               </HeartButton>
-              
-              <HeartButton 
+
+              <HeartButton
                 onClick={() => {
                   setCurrentStep("reasons");
                   setCurrentReasonIndex(0);

@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import cuteCatImage from "@/assets/cute-cat.png";
+import cuteCatImage from "@/assets/cute-cat.jpg";
 
 // Cat images array - using placeholder images from your knowledge base
 const catImages = [
   cuteCatImage,
-  "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&h=400&fit=crop&crop=face"
+  "https://i.chzbgr.com/full/10401721344/hA03E86F7/my-love-lofiofera",
+  "https://stickerly.pstatic.net/sticker_pack/GKxNn91GyJYvRhMszE6eOQ/FDXTPM/37/-976607614.png",
+  "https://i.pinimg.com/564x/85/bd/06/85bd06c324ea37c5eadec42c5927c154.jpg",
+  "https://www.inspireuplift.com/resizer/?image=https://cdn.inspireuplift.com/uploads/images/seller_products/33104/1705824152_Florkinlovememe.png&width=800&height=800&quality=90&format=auto&fit=pad",
+  "https://ih1.redbubble.net/image.488796000.1183/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
 ];
 
 interface CuteCatProps {
@@ -17,7 +17,11 @@ interface CuteCatProps {
   className?: string;
 }
 
-const CuteCat = ({ isWaving = false, message, className = "" }: CuteCatProps) => {
+const CuteCat = ({
+  isWaving = false,
+  message,
+  className = "",
+}: CuteCatProps) => {
   const [showMessage, setShowMessage] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -34,10 +38,14 @@ const CuteCat = ({ isWaving = false, message, className = "" }: CuteCatProps) =>
 
   return (
     <div className={`flex flex-col items-center ${className}`}>
-      <div className={`relative ${isWaving ? 'animate-bounce-cute' : 'animate-float'}`}>
-        <img 
-          src={catImages[currentImageIndex]} 
-          alt="Cute Cat" 
+      <div
+        className={`relative ${
+          isWaving ? "animate-bounce-cute" : "animate-float"
+        }`}
+      >
+        <img
+          src={catImages[currentImageIndex]}
+          alt="Cute Cat"
           className="w-32 h-32 md:w-40 md:h-40 drop-shadow-lg cursor-pointer hover:scale-105 transition-transform duration-200"
           onClick={handleImageClick}
         />
