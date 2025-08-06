@@ -47,7 +47,7 @@ const Index = () => {
     setCatMessage(
       eager ? "เย้! เตรียมตัวฟังให้ดีนะ!" : "เอาละ... เรามาเริ่มกันเถอะ"
     );
-    setTimeout(() => setCatMessage("ลองจิ้มที่รูปดูสิ@@"), 2000);
+    setTimeout(() => setCatMessage(""), 2000);
   };
 
   const nextReason = () => {
