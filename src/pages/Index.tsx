@@ -47,7 +47,7 @@ const Index = () => {
     setCatMessage(
       eager ? "เย้! เตรียมตัวฟังให้ดีนะ!" : "เอาละ... เรามาเริ่มกันเถอะ"
     );
-    setTimeout(() => setCatMessage(""), 2000);
+    setTimeout(() => setCatMessage("ลองจิ้มที่รูปดูสิ!!!!"), 2000);
   };
 
   const nextReason = () => {
@@ -68,7 +68,7 @@ const Index = () => {
   const resetToStart = () => {
     setCurrentStep("question");
     setCurrentReasonIndex(0);
-    setCatMessage("ลองจิ้มที่รูปดูสิ!!!");
+    setCatMessage("");
   };
 
   return (
