@@ -19,7 +19,7 @@ interface CuteCatProps {
 
 const CuteCat = ({
   isWaving = false,
-  message,
+  message = "ลองจิ้มที่รูปดูสิ",
   className = "",
 }: CuteCatProps) => {
   const [showMessage, setShowMessage] = useState(false);
