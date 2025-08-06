@@ -68,7 +68,7 @@ const Index = () => {
   const resetToStart = () => {
     setCurrentStep("question");
     setCurrentReasonIndex(0);
-    setCatMessage("");
+    setCatMessage("ลองจิ้มที่รูปดูสิ!!!");
   };
 
   return (
