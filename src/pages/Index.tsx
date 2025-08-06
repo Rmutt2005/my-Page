@@ -45,9 +45,9 @@ const Index = () => {
   const handleStartReasons = (eager: boolean) => {
     setCurrentStep("reasons");
     setCatMessage(
-      eager ? "ลองจิ้มที่รูปดูสิ!!!" : "เอาละ... เรามาเริ่มกันเถอะ"
+      eager ? "เย้! เตรียมตัวฟังให้ดีนะ!" : "เอาละ... เรามาเริ่มกันเถอะ"
     );
-    setTimeout(() => setCatMessage("ลองจิ้มที่รูปดูสิ!!!!"), 2000);
+    setTimeout(() => setCatMessage("ลองจิ้มที่รูปดูสิ@@"), 2000);
   };
 
   const nextReason = () => {
