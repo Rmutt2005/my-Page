@@ -84,10 +84,10 @@ const Index = () => {
           <div className="space-y-8 animate-fade-in">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
-                คุณเคยสงสัยไหม
+                เธอเคยสงสัยไหม
               </h1>
               <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-8">
-                ว่าทำไมคุณควรเป็นแฟนกับผม?
+                ว่าทำไมเธอควรเป็นแฟนกับเค้า?
               </h2>
             </div>
 
